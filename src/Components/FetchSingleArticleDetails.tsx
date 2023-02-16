@@ -19,7 +19,7 @@ const FetchSingleArticleDetails = () => {
 
     const fetchArticles = async () => {
         try {
-          let response = await fetch('https://api.spaceflightnewsapi.net/v3/articles/&i=' + id.id)
+          let response = await fetch(`https://api.spaceflightnewsapi.net/v3/articles/${id.id}`)
           if (response.ok) {
             let articlesFromApi = await response.json()
             console.log(articlesFromApi)
@@ -47,11 +47,13 @@ const FetchSingleArticleDetails = () => {
     //   }, [])
 
       return (
-        <Container key={articles.id}>
+        <Container key={id.id}>
           <Row className="justify-content-center">
             <Col className="text-center">
-              <h2>Details of article with id</h2>
-              <h3>{id.id}</h3>
+              <h2>Details of article: "{articles.title}"</h2>
+              <h3>id: {id.id}</h3>
+              <p>Published: {articles.publishedAt}</p>
+              <img src={articles.imageUrl} alt="" />
             </Col>
           </Row>
           <Row>
