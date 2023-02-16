@@ -4,6 +4,7 @@ import { useParams,  } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { IArticle } from "../Interfaces/IArticle"
 import { Container, Row, Col,  } from "react-bootstrap";
+import ArticleComponent from "./ArticleComponent";
 // import ArticleComponent from "./ArticleComponent";
 
 
@@ -12,8 +13,8 @@ const FetchSingleArticleDetails = () => {
     const id = useParams<{id: string}>()
     console.log("params are: ", id)
 
-    // const [articles, setArticles] = useState<IArticle[]>()
-    const [articles, setArticles] = useState(null)
+    const [articles, setArticles] = useState<IArticle[]>([])
+    // const [articles, setArticles] = useState(null)
     
 
     const fetchArticles = async () => {
@@ -46,10 +47,10 @@ const FetchSingleArticleDetails = () => {
     //   }, [])
 
       return (
-        <Container>
+        <Container key={articles.id}>
           <Row className="justify-content-center">
             <Col className="text-center">
-              <h2>Details of </h2>
+              <h2>Details of article with id</h2>
               <h3>{id.id}</h3>
             </Col>
           </Row>
