@@ -1,11 +1,15 @@
 import { Container, Row, Col,  } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { IArticle } from "../Interfaces/IArticle";
+import ArticleComponent from "./ArticleComponent";
 
 const FetchAllArticlesComponent =() => {
     const URL = 'https://api.spaceflightnewsapi.net/v3/articles'
 
     const [articles, setArticles] = useState<IArticle[]>([])
+    const sayHello = (person: string) => {
+        console.log('Hello, ' + person)
+      }
 
     const fetchArticles = async () => {
         try {
@@ -36,7 +40,7 @@ const FetchAllArticlesComponent =() => {
           <Row>
             {articles.map((a) => (
               <Col xs={12} md={4} lg={3} className="text-dark" key={a.id}>
-                {/* <BookComponent book={b} sayHello={sayHello} /> */}
+                <ArticleComponent article={a} sayHello={sayHello} />
               </Col>
             ))}
           </Row>
