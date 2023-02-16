@@ -1,19 +1,24 @@
-import { useParams } from "react-router-dom"
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import { useParams,  } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { IArticle } from "../Interfaces/IArticle"
 import { Container, Row, Col,  } from "react-bootstrap";
-import ArticleComponent from "./ArticleComponent";
+// import ArticleComponent from "./ArticleComponent";
 
 
 const FetchSingleArticleDetails = () => {
     
-    const params = useParams<{id: string}>()
-    const [articles, setArticles] = useState<IArticle[]>([])
-    const readMore = () => {}
+    const id = useParams<{id: string}>()
+    console.log("params are: ", id)
+
+    // const [articles, setArticles] = useState<IArticle[]>()
+    const [articles, setArticles] = useState(null)
+    
 
     const fetchArticles = async () => {
         try {
-          let response = await fetch('https://api.spaceflightnewsapi.net/v3/articles/' + params.id)
+          let response = await fetch('https://api.spaceflightnewsapi.net/v3/articles/&i=' + id.id)
           if (response.ok) {
             let articlesFromApi = await response.json()
             console.log(articlesFromApi)
@@ -25,25 +30,32 @@ const FetchSingleArticleDetails = () => {
           console.log(error)
         }
       }
-    
+
       useEffect(() => {
         fetchArticles()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
+    
+    //   useEffect(() => {
+    //     fetchArticles()
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    //   let foundArticleObject = articles.find(
+    //     (article) => article.id.toString() === params.id
+    //   ) 
+    //   console.log('Article details found: ', foundArticleObject)
+    //   setArticles(foundArticleObject)
+    //   }, [])
 
       return (
         <Container>
           <Row className="justify-content-center">
             <Col className="text-center">
-              <h2>Welcome to Spaceflight News</h2>
+              <h2>Details of </h2>
+              <h3>{id.id}</h3>
             </Col>
           </Row>
           <Row>
-            {articles.map((a) => (
-              <Col xs={12} md={4} lg={3} className="text-dark" key={a.id}>
-                <ArticleComponent article={a} readMore={readMore} />
-              </Col>
-            ))}
+     
+          
           </Row>
         </Container>
       )
