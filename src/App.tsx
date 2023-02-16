@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import FetchAllArticlesComponent from './Components/FetchAllArticlesComponent';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<FetchAllArticlesComponent />}>
           </Route>
         </Routes>
       </header>
