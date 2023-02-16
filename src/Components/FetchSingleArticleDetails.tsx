@@ -4,7 +4,6 @@ import { useParams,  } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { IArticle } from "../Interfaces/IArticle"
 import { Container, Row, Col,  } from "react-bootstrap";
-import ArticleComponent from "./ArticleComponent";
 // import ArticleComponent from "./ArticleComponent";
 
 
