@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import FetchAllArticlesComponent from './Components/FetchAllArticlesComponent';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (

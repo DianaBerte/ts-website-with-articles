@@ -7,9 +7,8 @@ const FetchAllArticlesComponent =() => {
     const URL = 'https://api.spaceflightnewsapi.net/v3/articles'
 
     const [articles, setArticles] = useState<IArticle[]>([])
-    const sayHello = (person: string) => {
-        console.log('Hello, ' + person)
-      }
+
+    const readMore = () => {}
 
     const fetchArticles = async () => {
         try {
@@ -34,13 +33,13 @@ const FetchAllArticlesComponent =() => {
         <Container>
           <Row className="justify-content-center">
             <Col className="text-center">
-              <h2>Articles from the internet! :)</h2>
+              <h2>Welcome to Spaceflight News</h2>
             </Col>
           </Row>
           <Row>
             {articles.map((a) => (
               <Col xs={12} md={4} lg={3} className="text-dark" key={a.id}>
-                <ArticleComponent article={a} sayHello={sayHello} />
+                <ArticleComponent article={a} readMore={readMore} />
               </Col>
             ))}
           </Row>

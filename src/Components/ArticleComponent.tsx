@@ -3,7 +3,7 @@ import { IArticle } from '../Interfaces/IArticle'
 
 interface ArticleComponentProps {
   article: IArticle
-  sayHello: (person: string) => void
+  readMore: any
 }
 
 const ArticleComponent = (props: ArticleComponentProps) => (
@@ -15,7 +15,7 @@ const ArticleComponent = (props: ArticleComponentProps) => (
       <Card.Text>
         {props.article.summary} 
       </Card.Text>
-      <Button onClick={() => props.sayHello('Stefano')}>Say hello!</Button>
+      <Button onClick={props.readMore}>Read More</Button>
     </Card.Body>
   </Card>
   </>
